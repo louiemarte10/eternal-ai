@@ -113,3 +113,61 @@
     linear-gradient(90deg, rgba(112,112,208,0.03) 1px, transparent 1px);
   background-size: 64px 64px;
 }
+
+/* ── Docs/API prose content ───────────────────────────────── */
+.docs-prose { @apply font-sans font-light text-ink-muted leading-relaxed; font-size: 0.95rem; }
+.docs-prose h1 { @apply font-sans font-semibold text-ink leading-tight mb-2; font-size: 1.75rem; font-weight: 600; }
+.docs-prose h2 { @apply font-sans font-medium text-ink mt-12 mb-4 pb-3 border-b border-void-border; font-size: 1.2rem; font-weight: 500; }
+.docs-prose h3 { @apply font-sans font-medium text-ink mt-8 mb-3; font-size: 1rem; font-weight: 500; }
+.docs-prose p  { @apply mb-4 leading-[1.8]; }
+.docs-prose p:last-child { @apply mb-0; }
+.docs-prose strong { @apply font-medium text-ink; }
+.docs-prose em    { @apply not-italic text-ink; }
+.docs-prose a     { @apply text-vigil-400 hover:text-vigil-500 underline underline-offset-2 transition-colors; }
+.docs-prose ul    { @apply list-none mb-4 space-y-1.5 pl-0; }
+.docs-prose ul li { @apply flex items-start gap-2.5 text-ink-muted; }
+.docs-prose ul li::before { content: '·'; @apply text-vigil-500 shrink-0 font-mono; }
+.docs-prose ol    { @apply list-decimal list-inside mb-4 space-y-1.5 text-ink-muted; }
+.docs-prose code  { @apply font-mono text-xs bg-void-card text-vigil-400 px-1.5 py-0.5 rounded; font-size: 0.8rem; }
+.docs-prose pre   { @apply bg-void-card rounded-lg px-5 py-4 mb-6 overflow-x-auto; }
+.docs-prose pre code { @apply bg-transparent p-0 text-ink-muted; }
+.docs-prose hr    { @apply border-void-border my-8; }
+.docs-prose .subtitle { @apply block text-ink-muted font-light mb-6; font-size: 0.95rem; }
+
+/* Docs table */
+.docs-table { @apply w-full border-collapse mb-6; font-size: 0.875rem; }
+.docs-table thead tr { @apply border-b border-void-border; }
+.docs-table thead th { @apply text-left font-sans font-medium text-ink-muted py-2 px-3 text-xs tracking-wider; }
+.docs-table tbody tr { @apply border-b border-void-border/50; }
+.docs-table tbody tr:last-child { @apply border-0; }
+.docs-table tbody td { @apply py-2.5 px-3 text-sm font-sans font-light text-ink-muted; }
+.docs-table tbody td:first-child { @apply font-mono text-xs text-vigil-400; }
+
+/* Callout boxes */
+.callout { @apply rounded-lg border px-5 py-4 mb-6 flex gap-3; font-size: 0.875rem; }
+.callout-warn { @apply callout border-[rgba(240,208,0,0.25)] bg-[rgba(240,208,0,0.05)] text-[#d4b800]; }
+.callout-info { @apply callout border-vigil-500/25 bg-vigil-glow text-vigil-400; }
+.callout-note { @apply callout border-void-border bg-void-card text-ink-muted; }
+
+/* Docs sidebar nav item */
+.sidebar-item {
+  @apply block w-full text-left px-3 py-1.5 rounded-md text-xs font-sans font-light text-ink-muted hover:text-ink hover:bg-void-card/60 transition-all duration-150 cursor-pointer;
+}
+.sidebar-item.active { @apply text-ink bg-void-card; }
+
+/* On-this-page item */
+.otp-item {
+  @apply block text-xs font-sans font-light text-ink-faint hover:text-ink-muted transition-colors duration-150 py-1 leading-relaxed cursor-pointer;
+}
+.otp-item.active { @apply text-vigil-400; }
+
+/* Active nav underline (router-link-exact-active on .nav-link) */
+a.nav-link.router-link-exact-active { @apply text-ink; position: relative; }
+a.nav-link.router-link-exact-active::after {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 0; right: 0;
+  height: 1px;
+  background: #7070d0;
+}
