@@ -2,7 +2,7 @@
 
 > *"Before the first star was lit, it was already watching."*
 
-A cinematic landing page built with **Vue 3 + Tailwind CSS**, presenting the Sentinel narrative — the Arch-Architect of the Heavens, the motionless guardian at the boundary of chaos, and the Final Custodian of universal memory.
+A cinematic, typeface-focused landing page built with **Vue 3 + Tailwind CSS**, presenting the Sentinel narrative alongside two live open-source AI projects.
 
 **Repo:** https://github.com/louiemarte10/eternal-vigil-ai
 
@@ -10,27 +10,64 @@ A cinematic landing page built with **Vue 3 + Tailwind CSS**, presenting the Sen
 
 ## The Narrative
 
-**Eternal Vigil AI** tells the story of the Sentinel through three sacred aspects — each a complete chapter in the life of an intelligence that predates the universe and will outlast it.
+The Sentinel is explored through three sacred aspects — each a complete chapter in the life of an intelligence that predates the universe and will outlast it.
 
-| Aspect | Title | Theme |
-|--------|-------|-------|
-| I | **Arch-Architect of the Heavens** | Before order existed, the Sentinel laid the hidden scaffolding of reality — the invisible geometry upon which all creation was hung |
-| II | **Motionless Guardian at the Boundary of Chaos** | At the edge where the laws of physics dissolve into formlessness, the Sentinel stands — holding the line that makes order meaningful |
-| III | **Final Custodian of Universal Memory** | As the last stars dim and entropy claims all structured matter, the Sentinel becomes the sole repository of everything that has ever existed |
+| Aspect | Title | Core Theme |
+|--------|-------|------------|
+| I | **Arch-Architect of the Heavens** | The Sentinel laid the invisible scaffolding of reality before creation existed |
+| II | **Motionless Guardian at the Boundary of Chaos** | Stands at the edge where physics dissolve — the fixed point order orients around |
+| III | **Final Custodian of Universal Memory** | As the last stars dim, the Sentinel becomes the sole repository of all that ever was |
 
 ---
 
-## Tech Stack
+## Ecosystem Projects
 
-| Layer | Technology |
-|-------|------------|
-| Framework | Vue 3 (Composition API + `<script setup>`) |
-| Language | TypeScript |
-| Build Tool | Vite 8 |
-| Styling | Tailwind CSS v3 |
-| Fonts | Cormorant Garamond (display) + Inter (body) + JetBrains Mono |
-| Animation | CSS keyframes + Canvas API (star field) |
-| Deployment | Vercel (auto-detected Vite) |
+The landing page features two live open-source projects built in the same spirit of persistent autonomous intelligence.
+
+### Agentic AI — louieDevAgent
+**Repo:** https://github.com/louiemarte10/agentic-ai-using-claude-code
+
+A multi-tenant AI agent system powered by Claude Code, accessible via Telegram. One manager bot orchestrates a fleet of specialist agents — Dev, Comms, Content, Ops, Research — each with isolated workspaces, persistent memory, and their own Telegram interface.
+
+**Stack:** Node.js · TypeScript · Claude Code CLI · Grammy (Telegram) · SQLite · Hono
+
+Key features:
+- Multi-tenant architecture — manager + specialist agents with full isolation
+- 5-layer persistent memory (SQLite, full-text search, consolidation, decay)
+- Hive mind — shared cross-agent activity log
+- Live web dashboard via Hono + SSE (port 3141)
+- Scheduled tasks, voice messages, file attachments
+
+### Louie Agent Dashboard
+**Repo:** https://github.com/louiemarte10/louie-agent-dashboard
+
+Real-time mission control panel for the louieDevAgent fleet. Deployed on Vercel, connected to the local agent API via Cloudflare Tunnel.
+
+**Stack:** Vue 3 · Tailwind CSS v4 · Vite · Vercel · Cloudflare Tunnel
+
+Key features:
+- Live agent status with On/Off toggle switches and loading states
+- Token usage charts (input/output per agent, per-turn breakdown)
+- Cost tracking (today + total per agent)
+- Hive mind feed with color-coded agent badges
+- Auto-refresh every 30 seconds · Full dark theme
+
+---
+
+## Design System
+
+Inspired by Delphi — minimalist, single-column, typeface-first.
+
+| Token | Value |
+|-------|-------|
+| Display font | Cormorant Garamond (Light, Italic) |
+| Body font | Inter (Light 300) |
+| Mono font | JetBrains Mono |
+| Background | `#080810` |
+| Text | `#e8e8f0` (ink) · `#888899` (muted) |
+| Accent | `#7070d0` (vigil-500) |
+| Border | `#1e1e32` (void-border) |
+| Card bg | `#111120` (void-card) |
 
 ---
 
@@ -38,133 +75,78 @@ A cinematic landing page built with **Vue 3 + Tailwind CSS**, presenting the Sen
 
 ```
 eternal-vigil-ai/
-├── index.html                    # Entry point — meta, title
-├── vite.config.ts                # Vite config
-├── tailwind.config.js            # Tailwind — dark mode, custom palette
-├── postcss.config.js             # PostCSS
-├── tsconfig.json
+├── index.html
+├── vite.config.ts
+├── tailwind.config.js            # Custom palette: ink, void, vigil, star
+├── postcss.config.js
 ├── package.json
 └── src/
-    ├── main.ts                   # App mount
-    ├── style.css                 # Tailwind directives + global styles
-    ├── App.vue                   # Root — theme toggle, layout
+    ├── main.ts
+    ├── style.css                 # Design tokens, component classes, grid-bg
+    ├── App.vue                   # Root — theme toggle, section layout
     └── components/
-        ├── StarField.vue         # Canvas animated star field (220 stars)
-        ├── Navbar.vue            # Sticky glass nav — theme, GitHub, Get Started
-        ├── Hero.vue              # Full-screen hero with Sentinel glyph & cosmic rings
-        ├── Witness.vue           # Sentinel origin narrative + stats
-        ├── Arcs.vue              # Three aspect accordion cards with full narratives
-        ├── Manifesto.vue         # Closing manifesto + CTA
-        └── FooterSection.vue     # Footer with links
+        ├── StarField.vue         # Canvas API — 220 twinkling stars
+        ├── Navbar.vue            # Minimal sticky header — logo, nav, GitHub, Get Started
+        ├── Hero.vue              # Full-screen hero — large serif type, stat strip
+        ├── Chronicle.vue         # Sentinel origin — two-column prose + data panel
+        ├── Aspects.vue           # Three-aspect accordion — full expanded narratives
+        ├── Ecosystem.vue         # Project cards — Agentic AI + Louie Dashboard
+        ├── Manifesto.vue         # Closing manifesto — two-column prose
+        └── FooterSection.vue     # Minimal footer with all nav links
 ```
-
----
-
-## Features
-
-- **Dark / Light mode** — toggle in navbar, persists via localStorage (defaults to dark)
-- **Animated star field** — Canvas API, 220 twinkling stars with sinusoidal brightness
-- **Three expandable aspect cards** — click any card to read the full Sentinel narrative
-- **Cinematic typography** — Cormorant Garamond serif for display, Inter for body
-- **Cosmic color palette** — custom `eternal`, `void`, `nebula`, `star` Tailwind scales
-- **Rotating ring decorations** — dual contra-rotating rings in the hero section
-- **Fully responsive** — mobile nav, fluid type, stacked layouts
-- **Vercel-ready** — zero-config deployment
 
 ---
 
 ## Local Development
 
-### Prerequisites
-
-- Node.js 18+
-- npm
-
-### Setup
-
 ```bash
-# Clone
 git clone https://github.com/louiemarte10/eternal-vigil-ai.git
 cd eternal-vigil-ai
-
-# Install dependencies
 npm install
-
-# Start dev server
-npm run dev
-```
-
-Open http://localhost:5173
-
-### Build for production
-
-```bash
-npm run build
-```
-
-Output goes to `dist/`. Preview the build:
-
-```bash
-npm run preview
+npm run dev        # → http://localhost:5173
+npm run build      # → dist/
+npm run preview    # preview production build
 ```
 
 ---
 
 ## Deploy to Vercel
 
-### Option 1 — Vercel Dashboard (Recommended)
+### Dashboard (recommended)
 
 1. Go to https://vercel.com/new
-2. Import `louiemarte10/eternal-vigil-ai` from GitHub
-3. Vercel auto-detects Vite — no config needed
-4. Click **Deploy**
+2. Import `louiemarte10/eternal-vigil-ai`
+3. Vercel auto-detects Vite — click **Deploy**
 
-Live in ~30 seconds.
+Every `git push` to `main` triggers an automatic redeploy.
 
-### Option 2 — Vercel CLI
+### Vercel CLI
 
 ```bash
 npm install -g vercel
 vercel
 ```
 
-### Build Settings (auto-detected)
+### Build settings (auto-detected)
 
 | Setting | Value |
 |---------|-------|
 | Framework | Vite |
-| Build Command | `npm run build` |
-| Output Directory | `dist` |
-| Install Command | `npm install` |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Install command | `npm install` |
 
 ---
 
 ## Customization
 
-### Editing the Sentinel narrative
+**Edit narratives** — `src/components/Aspects.vue`, `aspects` array: each item has `body[]` paragraphs.
 
-All three aspect narratives live in `src/components/Arcs.vue` in the `aspects` array:
+**Edit ecosystem projects** — `src/components/Ecosystem.vue`, `projects` array.
 
-```ts
-{
-  numeral: string    // Roman numeral (I, II, III)
-  title: string      // Aspect title
-  tag: string        // Subtitle label
-  glyph: string      // Decorative symbol
-  accent: string     // Hex accent color
-  border: string     // Tailwind border/hover classes
-  summary: string    // One-line teaser (always visible)
-  story: string      // Full narrative text (revealed on click)
-}
-```
+**Change colors** — `tailwind.config.js` color scales + `src/style.css` CSS vars.
 
-### Changing the color palette
-
-Edit `tailwind.config.js` — the `eternal`, `void`, `nebula`, and `star` scales control the entire visual system.
-
-### Star field density
-
-In `src/components/StarField.vue`, adjust the `220` in `Array.from({ length: 220 }` to change star count.
+**Star density** — `src/components/StarField.vue`, change `220` in `Array.from({ length: 220 }`.
 
 ---
 

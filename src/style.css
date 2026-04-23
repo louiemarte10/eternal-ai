@@ -1,80 +1,115 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 17px;
+  }
+
   body {
     margin: 0;
     font-family: 'Inter', system-ui, sans-serif;
-    background: #020208;
-    color: #e2e2f0;
+    background: #080810;
+    color: #e8e8f0;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: rgba(112, 112, 208, 0.25);
+    color: #e8e8f0;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: #080810; }
+  ::-webkit-scrollbar-thumb { background: rgba(112,112,208,0.3); border-radius: 2px; }
+}
+
+@layer components {
+  /* Delphi-style section label */
+  .section-label {
+    @apply text-2xs tracking-[0.35em] uppercase text-ink-muted font-sans font-normal;
+  }
+
+  /* Display heading — Cormorant, generous tracking */
+  .display-xl {
+    @apply font-display font-light tracking-tight leading-none;
+    font-size: clamp(3rem, 8vw, 7rem);
+  }
+  .display-lg {
+    @apply font-display font-light;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .display-md {
+    @apply font-display font-light;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.2;
+  }
+
+  /* Prose block */
+  .prose-vigil {
+    @apply font-sans font-light text-ink-muted leading-[1.85] max-w-prose mx-auto;
+    font-size: 1rem;
+  }
+  .prose-vigil p + p { @apply mt-6; }
+  .prose-vigil em { @apply text-ink not-italic; }
+
+  /* Hairline rule */
+  .rule { @apply w-full h-px bg-void-border; }
+  .rule-glow { height: 1px; background: linear-gradient(90deg, transparent, rgba(112,112,208,0.35), transparent); }
+
+  /* Nav link */
+  .nav-link {
+    @apply text-2xs tracking-[0.18em] uppercase text-ink-muted hover:text-ink transition-colors duration-200 font-sans;
+  }
+
+  /* Card */
+  .vigil-card {
+    @apply rounded-xl border border-void-border bg-void-card transition-all duration-300;
+  }
+  .vigil-card:hover {
+    border-color: rgba(112,112,208,0.25);
+    box-shadow: 0 0 40px rgba(112,112,208,0.06);
+  }
+
+  /* Pill badge */
+  .pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full border border-void-border text-2xs tracking-[0.15em] uppercase text-ink-muted font-sans;
+  }
+
+  /* CTA primary */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-vigil-500 text-2xs tracking-[0.18em] uppercase text-vigil-400 hover:bg-vigil-500/10 hover:border-vigil-400 transition-all duration-200 font-sans;
+  }
+  /* CTA ghost */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-2xs tracking-[0.18em] uppercase text-ink-muted hover:text-ink transition-colors duration-200 font-sans;
   }
 }
 
-/* Star field canvas background */
-.star-canvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+/* Aspect expanded content */
+.aspect-body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #aaaabc;
 }
+.aspect-body p + p { margin-top: 1.5rem; }
 
-/* Noise texture overlay */
-.noise::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMCBAYIChBVJXoAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAXSURBVDjLY2AYBaNgFIyCUTAKRgEAAAQAAAH/2BpXAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTAzLTI3VDEzOjEzOjIwKzAwOjAwWQxJugAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0wMy0yN1QxMzoxMzoyMCswMDowMCiBsQYAAAAASUVORK5CYII=");
-  opacity: 0.03;
-  pointer-events: none;
+/* Grid noise overlay */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(112,112,208,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(112,112,208,0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
-
-@layer utilities {
-  .gradient-eternal {
-    background: linear-gradient(135deg, #a0a0f8 0%, #c084fc 50%, #fde68a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .text-shimmer {
-    background: linear-gradient(90deg, #6060e0, #a855f7, #fbbf24, #a855f7, #6060e0);
-    background-size: 300% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 6s linear infinite;
-  }
-  .glass-dark {
-    backdrop-filter: blur(16px);
-    background: rgba(5, 5, 20, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-  }
-  .arc-card {
-    background: linear-gradient(135deg, rgba(10, 10, 35, 0.9) 0%, rgba(5, 5, 20, 0.95) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: all 0.4s ease;
-  }
-  .arc-card:hover {
-    border-color: rgba(160, 160, 248, 0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(60, 60, 200, 0.15);
-  }
-  .divider-cosmic {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(160, 160, 248, 0.3), rgba(192, 132, 252, 0.3), transparent);
-  }
-}
-
-@keyframes shimmer {
-  0%   { background-position: 0% center; }
-  100% { background-position: 300% center; }
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #020208; }
-::-webkit-scrollbar-thumb { background: rgba(96, 96, 224, 0.4); border-radius: 2px; }
