@@ -5,9 +5,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink:    { DEFAULT: '#e8e8f0', muted: '#888899', faint: '#44445a', dim: '#22223a' },
-        void:   { DEFAULT: '#080810', soft: '#0e0e1c', card: '#111120', border: '#1e1e32' },
-        vigil:  { 400: '#9494e8', 500: '#7070d0', 600: '#5050b8', glow: 'rgba(112,112,208,0.15)' },
+        ink:    {
+          DEFAULT: 'rgb(var(--ink) / <alpha-value>)',
+          muted:   'rgb(var(--ink-muted) / <alpha-value>)',
+          faint:   'rgb(var(--ink-faint) / <alpha-value>)',
+          dim:     'rgb(var(--ink-dim) / <alpha-value>)',
+        },
+        void:   {
+          DEFAULT: 'rgb(var(--void) / <alpha-value>)',
+          soft:    'rgb(var(--void-soft) / <alpha-value>)',
+          card:    'rgb(var(--void-card) / <alpha-value>)',
+          border:  'rgb(var(--void-border) / <alpha-value>)',
+        },
+        vigil:  {
+          400:  'rgb(var(--vigil-400) / <alpha-value>)',
+          500:  'rgb(var(--vigil-500) / <alpha-value>)',
+          600:  'rgb(var(--vigil-600) / <alpha-value>)',
+          glow: 'rgba(112,112,208,0.15)',
+        },
         star:   { warm: '#f0d080', cool: '#c0c8ff' },
       },
       fontFamily: {

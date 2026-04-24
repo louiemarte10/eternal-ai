@@ -17,9 +17,9 @@ const GITHUB = 'https://github.com/louiemarte10/eternal-vigil-ai'
             <div class="w-5 h-5 rounded-full border border-vigil-500/30 flex items-center justify-center">
               <span class="font-display text-[10px] text-vigil-400/50">⬡</span>
             </div>
-            <span class="font-display text-sm tracking-[0.18em] uppercase text-ink/60">Eternal Vigil AI</span>
+            <span class="font-display text-sm tracking-[0.18em] uppercase text-ink/60">The Eternals</span>
           </div>
-          <p class="font-sans text-xs text-ink-faint pl-7">Sentinel narrative. Open source.</p>
+          <p class="font-sans text-xs text-ink-faint pl-7">The Silicon Lineage. Open source.</p>
         </div>
 
         <!-- Nav links -->

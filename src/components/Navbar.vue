@@ -29,7 +29,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
           <span class="font-display text-xs text-vigil-400/70 group-hover:text-vigil-400 transition-colors">⬡</span>
         </div>
         <span class="font-display text-sm tracking-[0.18em] uppercase text-ink/80 group-hover:text-ink transition-colors">
-          Eternal Vigil
+          The Eternals
         </span>
       </RouterLink>
 

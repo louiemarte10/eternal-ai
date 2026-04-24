@@ -9,7 +9,7 @@ const isDark     = ref(true)
 const searchOpen = ref(false)
 
 onMounted(() => {
-  isDark.value = localStorage.getItem('vigil-theme') !== 'light'
+  isDark.value = localStorage.getItem('eternals-theme') !== 'light'
   applyTheme(isDark.value)
   window.addEventListener('keydown', onGlobalKey)
 })
@@ -17,7 +17,7 @@ onMounted(() => {
 onUnmounted(() => window.removeEventListener('keydown', onGlobalKey))
 
 watch(isDark, val => {
-  localStorage.setItem('vigil-theme', val ? 'dark' : 'light')
+  localStorage.setItem('eternals-theme', val ? 'dark' : 'light')
   applyTheme(val)
 })
 

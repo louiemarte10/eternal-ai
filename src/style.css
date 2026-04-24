@@ -4,6 +4,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Theme tokens (dark default) ───────────────────────────── */
+:root {
+  --void:        8 8 16;
+  --void-soft:   14 14 28;
+  --void-card:   17 17 32;
+  --void-border: 30 30 50;
+  --ink:         232 232 240;
+  --ink-muted:   136 136 153;
+  --ink-faint:   68 68 90;
+  --ink-dim:     34 34 58;
+  --vigil-400:   148 148 232;
+  --vigil-500:   112 112 208;
+  --vigil-600:   80 80 184;
+}
+
+html:not(.dark) {
+  --void:        246 246 252;
+  --void-soft:   238 238 248;
+  --void-card:   228 228 244;
+  --void-border: 200 200 220;
+  --ink:         22 22 46;
+  --ink-muted:   74 74 106;
+  --ink-faint:   130 130 158;
+  --ink-dim:     200 200 218;
+  --vigil-400:   72 72 186;
+  --vigil-500:   58 58 162;
+  --vigil-600:   46 46 136;
+}
+
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
 
@@ -15,11 +44,12 @@
   body {
     margin: 0;
     font-family: 'Inter', system-ui, sans-serif;
-    background: #080810;
-    color: #e8e8f0;
+    background: rgb(var(--void));
+    color: rgb(var(--ink));
     font-weight: 300;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
   ::selection {
@@ -28,8 +58,8 @@
   }
 
   ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-track { background: #080810; }
-  ::-webkit-scrollbar-thumb { background: rgba(112,112,208,0.3); border-radius: 2px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--void)); }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--vigil-500) / 0.3); border-radius: 2px; }
 }
 
 @layer components {
@@ -102,7 +132,7 @@
   font-weight: 300;
   font-size: 1.1rem;
   line-height: 2;
-  color: #aaaabc;
+  color: rgb(var(--ink-muted));
 }
 .aspect-body p + p { margin-top: 1.5rem; }
 
